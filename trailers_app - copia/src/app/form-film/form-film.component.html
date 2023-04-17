@@ -1,0 +1,77 @@
+<div class="card">
+
+  <div class="card-header">
+    Registrar una nueva pelicula
+  </div>
+
+  <div class="card-body">
+    <mat-tab-group>
+      <mat-tab label="Pelicula">
+        <form class="film" formGroup="filmForm">
+
+          <br>
+          <mat-form-field appearance="fill" class="film-element">
+            <mat-label>Titulo</mat-label>
+            <input matInput [(ngModel)]="pelicula.titulo">
+          </mat-form-field>
+
+
+          <mat-form-field class="example-full-width" class="film-element">
+            <mat-label>Sinopsis</mat-label>
+            <textarea matInput placeholder="Sinopsis" [(ngModel)]="pelicula.sinopsis"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="film-element">
+            <mat-label>Fecha Estreno</mat-label>
+            <input type="date" matInput [(ngModel)]="pelicula.fechaEstreno">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="film-element">
+            <mat-label>Youtube Trailer ID </mat-label>
+            <input matInput [(ngModel)]="pelicula.youtubeTrailerId">
+          </mat-form-field>
+
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" (change)="capturarImg($event)" class="custom-file-input" >
+              <label class="custom-file-label" for="inputGroupFile04">{{pelicula.portada}}</label>
+            </div>
+          </div>
+          <br>
+
+          <h4>Genero</h4>
+          <mat-form-field appearance="fill" >
+            <mat-label>State</mat-label>
+            <mat-select >
+              <mat-option *ngFor="let genero of generos" (click)="filmGeneros($event,genero)">
+                {{genero.titulo}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <div class="card">
+            <mat-chip-row *ngFor="let item of generosFilm" (removed)="removeGenero(item)" class="selectIcon">
+              {{item.titulo}}
+              <button matChipRemove aria-label="'remove ' + keyword">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </div>
+          <br>
+
+
+          <div class="my-2 text-left">
+            <button class="btn btn-primary mb-3" type="button" (click)="savePelicula()">
+              Siguiente
+            </button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Preview">
+        <app-film-card [pelicula]="pelicula"> </app-film-card>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</div>
