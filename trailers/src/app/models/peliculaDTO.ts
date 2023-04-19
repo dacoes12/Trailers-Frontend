@@ -6,8 +6,8 @@ export class peliculaDTO{
   sinopsis?:string;
   youtubeTrailerId?:string;
   fechaEstreno?: Date;
-  generos !:generoDTO[];
-  portada ?: string;
+  generos :generoDTO[] = [];
+  urlPortada ?: string;
 
 
   constructor(){

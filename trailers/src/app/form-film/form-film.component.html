@@ -34,7 +34,7 @@
           <div class="input-group">
             <div class="custom-file">
               <input accept="image/png,image/jpeg" type="file" class="custom-file-input" id="imagenFilm" (change)="capturarImg($event)">
-              <label class="custom-file-label" for="inputGroupFile04">{{pelicula.portada}}</label>
+              <label class="custom-file-label" for="inputGroupFile04">{{pelicula.urlPortada}}</label>
             </div>
           </div>
           <br>
@@ -50,7 +50,7 @@
           </mat-form-field>
           <br>
           <div class="card">
-            <mat-chip-row *ngFor="let item of generosFilm" (removed)="removeGenero(item)" class="selectIcon">
+            <mat-chip-row *ngFor="let item of pelicula.generos" (removed)="removeGenero(item)" class="selectIcon">
               {{item.titulo}}
               <button matChipRemove aria-label="'remove ' + keyword">
                 <mat-icon>cancel</mat-icon>

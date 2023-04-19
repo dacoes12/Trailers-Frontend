@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { ResponseImg } from 'src/app/models/response';
 
 
 @Injectable({
@@ -13,12 +14,12 @@ export class ImgBBService {
 
   constructor(private httpClient: HttpClient) { }
 
-  cargarImagen(file:File):Observable<Object>{
+  cargarImagen(file:File){
     const formData = new FormData();
 
     formData.append('image',file);
 
-    return this.httpClient.post('upload',formData,{params:{key:this.apiKey} })
+    return this.httpClient.post<ResponseImg>('upload',formData,{params:{key:this.apiKey} }).pipe(map(response => response.data.url))
 
   }
 }

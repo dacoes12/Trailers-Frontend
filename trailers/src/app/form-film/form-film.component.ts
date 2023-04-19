@@ -3,6 +3,7 @@ import { peliculaDTO } from '../models/peliculaDTO';
 import { ServiceGeneroService } from '../service/service-genero.service';
 import { generoDTO } from '../models/generoDTO';
 import { ImgBBService } from '../service/imgBB/img-bb.service';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'app-form-film',
@@ -16,6 +17,7 @@ export class FormFilmComponent implements OnInit{
 
   constructor(private serviceGenero:ServiceGeneroService, private imgBBService: ImgBBService){
     this.pelicula = new peliculaDTO();
+
   }
 
   ngOnInit(): void {
@@ -29,31 +31,32 @@ export class FormFilmComponent implements OnInit{
   }
 
   removeGenero(item:generoDTO){
-    const index = this.generosFilm.indexOf(item);
+    const index = this.pelicula.generos.indexOf(this.pelicula.generos.filter(Element => item.id == Element.id)[0])
+    console.log(index)
     if (index >= 0) {
-      this.generosFilm.splice(index, 1);
+      this.pelicula.generos.splice(index, 1);
     }
   }
   filmGeneros(event:any,selectGenero:generoDTO){
-    const index = this.generosFilm.indexOf(selectGenero);
+    const index = this.pelicula.generos.indexOf(this.pelicula.generos.filter(Element => selectGenero.id == Element.id)[0])
     if (index >= 0) {
       console.log("Ya se encuentra registrado")
     }else{
-      this.generosFilm.push(selectGenero)
+      this.pelicula.generos.push(selectGenero)
     }
   }
 
   capturarImg(event: any){
     const input = event.target as HTMLInputElement;
-
     console.log(input.files)
     this.imgBBService.cargarImagen(input.files![0]).subscribe((response) =>
-    console.log(response)
+      this.pelicula.urlPortada = response
     );
+
   }
 
   savePelicula(){
-
+    console.log(this.pelicula)
   }
 
 }
