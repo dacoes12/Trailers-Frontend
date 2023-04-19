@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { peliculaDTO } from '../models/peliculaDTO';
 import { ServiceGeneroService } from '../service/service-genero.service';
 import { generoDTO } from '../models/generoDTO';
+import { ImgBBService } from '../service/imgBB/img-bb.service';
 
 @Component({
   selector: 'app-form-film',
@@ -13,7 +14,7 @@ export class FormFilmComponent implements OnInit{
   generos : generoDTO[] = [];
   generosFilm : generoDTO[] = [];
 
-  constructor(private serviceGenero:ServiceGeneroService){
+  constructor(private serviceGenero:ServiceGeneroService, private imgBBService: ImgBBService){
     this.pelicula = new peliculaDTO();
   }
 
@@ -42,16 +43,17 @@ export class FormFilmComponent implements OnInit{
     }
   }
 
-  savePelicula(){
-    console.log(this.pelicula);
+  capturarImg(event: any){
+    const input = event.target as HTMLInputElement;
+
+    console.log(input.files)
+    this.imgBBService.cargarImagen(input.files![0]).subscribe((response) =>
+    console.log(response)
+    );
   }
 
-  capturarImg(event: any){
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-        console.log(reader.result);
-    };
+  savePelicula(){
+
   }
+
 }
