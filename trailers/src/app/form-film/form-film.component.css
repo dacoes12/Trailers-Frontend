@@ -20,3 +20,12 @@
   shape-margin: 0%;
 }
 
+.card-formulario{
+  height: 50%;
+  width: 50%;
+}
+
+#columna{
+  top:50%;
+}
+

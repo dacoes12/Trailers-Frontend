@@ -4,6 +4,10 @@ import { ServiceGeneroService } from '../service/service-genero.service';
 import { generoDTO } from '../models/generoDTO';
 import { ImgBBService } from '../service/imgBB/img-bb.service';
 import { elementAt } from 'rxjs';
+import { PeliculaService } from '../service/pelicula/pelicula.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalCardComponent } from '../modal-card/modal-card.component';
+import { ModalImagenComponent } from '../modal-imagen/modal-imagen.component';
 
 @Component({
   selector: 'app-form-film',
@@ -14,8 +18,14 @@ export class FormFilmComponent implements OnInit{
   pelicula !: peliculaDTO;
   generos : generoDTO[] = [];
   generosFilm : generoDTO[] = [];
+  switchModal ?: boolean;
+  imagen : any;
+  imagenName : string = '';
+  craftImagenPreview:any;
 
-  constructor(private serviceGenero:ServiceGeneroService, private imgBBService: ImgBBService){
+  constructor(private serviceGenero:ServiceGeneroService,
+    private imgBBService: ImgBBService,private peliculaService:PeliculaService,
+    private dialog:MatDialog){
     this.pelicula = new peliculaDTO();
 
   }
@@ -52,11 +62,30 @@ export class FormFilmComponent implements OnInit{
     this.imgBBService.cargarImagen(input.files![0]).subscribe((response) =>
       this.pelicula.urlPortada = response
     );
-
   }
 
   savePelicula(){
-    console.log(this.pelicula)
+    this.imgBBService.cargarImagen(this.imagen).subscribe((response) =>
+      this.pelicula.urlPortada = response
+    );
+    this.peliculaService.save(this.pelicula).subscribe( (response) =>
+    console.log(response)
+    )
+  }
+
+  openModal(){
+    this.dialog.open(ModalCardComponent,{data:this.pelicula})
+  }
+
+  showImg(event: any){
+    const input = event.target as HTMLInputElement;
+    this.imagen = input.files![0]
+    this.pelicula.urlPortada = URL.createObjectURL(this.imagen)
+    this.imagenName = this.imagen.name
+  }
+
+  openImagen(event:any){
+    this.dialog.open(ModalImagenComponent,{data:this.imagen});
   }
 
 }

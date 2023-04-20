@@ -18,6 +18,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
+import { ModalCardComponent } from './modal-card/modal-card.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
+
 
 
 @NgModule({
@@ -25,7 +30,9 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     HeaderComponent,
     FormFilmComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    ModalCardComponent,
+    ModalImagenComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     HttpClientModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

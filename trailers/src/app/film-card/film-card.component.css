@@ -3,3 +3,14 @@
   max-width: 300px;
   background-color: rgb(245, 240, 240);
 }
+
+.card{
+  display: inline;
+  border:none;
+}
+
+.icon{
+  margin-left: 8px;
+  margin-top: 8px;
+  shape-margin: 0%;
+}

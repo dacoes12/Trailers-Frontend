@@ -1,14 +1,13 @@
 <mat-card class="film-card">
   <mat-card-header>
     <mat-card-title>{{pelicula.titulo}}</mat-card-title>
-    <mat-card-subtitle>Generos</mat-card-subtitle>
     <mat-card-subtitle>Estreno:{{pelicula.fechaEstreno}}</mat-card-subtitle>
   </mat-card-header>
-
   <img mat-card-image src="{{pelicula.urlPortada}}">
-  <mat-card-content>
-    <p>
-      {{pelicula.sinopsis}}
-    </p>
-  </mat-card-content>
+  <mat-divider></mat-divider>
+  <div class="card">
+    <mat-chip-option disabled="" *ngFor="let item of pelicula.generos" class="icon">
+      {{item.titulo}}
+    </mat-chip-option>
+  </div>
 </mat-card>
