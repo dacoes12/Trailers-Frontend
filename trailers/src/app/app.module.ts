@@ -22,8 +22,13 @@ import { ModalCardComponent } from './modal-card/modal-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
+import { RouterModule, Routes } from '@angular/router';
 
 
+const routes: Routes = [
+  {path:'', redirectTo:'/register', pathMatch: 'full'},
+  {path:'register', component: FormFilmComponent}
+];
 
 @NgModule({
   declarations: [
@@ -49,7 +54,8 @@ import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
     MatChipsModule,
     MatIconModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

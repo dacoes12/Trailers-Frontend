@@ -1,13 +1,8 @@
-<mat-card class="film-card">
-  <mat-card-header>
-    <mat-card-title>{{pelicula.titulo}}</mat-card-title>
-    <mat-card-subtitle>Estreno:{{pelicula.fechaEstreno}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{pelicula.urlPortada}}">
-  <mat-divider></mat-divider>
-  <div class="card">
-    <mat-chip-option disabled="" *ngFor="let item of pelicula.generos" class="icon">
-      {{item.titulo}}
-    </mat-chip-option>
+<div class="card">
+  <mat-card class="film-card">
+    <img mat-card-image src="{{pelicula.urlPortada}}" id="imagenFilm">
+  </mat-card>
+  <div class="card-body" style="width: 18rem;">
+    <p>{{pelicula.titulo}}</p>
   </div>
-</mat-card>
+</div>
