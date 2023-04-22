@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-4">
+        <br>
+        <mat-card class="film-card">
+          <img mat-card-image src="{{pelicula.urlPortada}}" id="imagenFilm">
+        </mat-card>
+      </div>
+      <div class="col-md-8">
+
+        <div class="card-info">
+          <h1>{{pelicula.titulo}}</h1>
+          <div class="card-generos">
+            <mat-chip-row *ngFor="let item of pelicula.generos" class="selectIcon" disable>
+              {{item.titulo}}
+            </mat-chip-row>
+          </div>
+          <br>
+          <div class="mat-card-content">
+            <h2>Estreno: {{pelicula.fechaEstreno}}</h2>
+            <p>{{pelicula.sinopsis}}</p>
+            <button mat-raised-button color="primary" (click)="openTrailer()">Trailer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

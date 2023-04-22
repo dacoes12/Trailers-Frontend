@@ -1,20 +1,16 @@
 <div class="card">
-
   <div class="card-header">
-    Registrar una nueva pelicula
+    <h2> Registrar una nueva pelicula </h2>
   </div>
-
   <div class="card-body">
-    <mat-tab-group>
-      <mat-tab label="Pelicula">
+    <div class="row">
+      <div class="col-sm-6" id="columna">
         <form class="film" formGroup="filmForm">
-
           <br>
           <mat-form-field appearance="fill" class="film-element">
             <mat-label>Titulo</mat-label>
             <input matInput [(ngModel)]="pelicula.titulo">
           </mat-form-field>
-
 
           <mat-form-field class="example-full-width" class="film-element">
             <mat-label>Sinopsis</mat-label>
@@ -31,46 +27,60 @@
             <input matInput [(ngModel)]="pelicula.youtubeTrailerId">
           </mat-form-field>
 
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" (change)="capturarImg($event)" class="custom-file-input" >
-              <label class="custom-file-label" for="inputGroupFile04">{{pelicula.portada}}</label>
-            </div>
-          </div>
-          <br>
-
           <h4>Genero</h4>
-          <mat-form-field appearance="fill" >
+          <mat-form-field appearance="fill">
             <mat-label>State</mat-label>
-            <mat-select >
+            <mat-select>
               <mat-option *ngFor="let genero of generos" (click)="filmGeneros($event,genero)">
                 {{genero.titulo}}
               </mat-option>
             </mat-select>
           </mat-form-field>
           <br>
+
           <div class="card">
-            <mat-chip-row *ngFor="let item of generosFilm" (removed)="removeGenero(item)" class="selectIcon">
+            <mat-chip-row *ngFor="let item of pelicula.generos" (removed)="removeGenero(item)" class="selectIcon">
               {{item.titulo}}
               <button matChipRemove aria-label="'remove ' + keyword">
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip-row>
+            <br>
+            <br>
           </div>
-          <br>
 
+          <div class="input-group">
+            <div class="custom-file">
+              <input accept="image/png,image/jpeg" type="file" class="custom-file-input" id="imagenFilm"
+                (change)="showImg($event)">
+              <label class="custom-file-label" for="inputGroupFile04"></label>
+              <label class="custom-file-label" for="inputGroupFile04">{{imagenName}}</label>
+            </div>
+            <!-- <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="openImagen($event)">View</button>
+            </div> -->
+          </div>
+
+          <!-- <div class="my-2 text-left">
+            <button class="btn btn-primary mb-3" type="button" (click)="openModal()">
+              guardar
+            </button>
+          </div> -->
 
           <div class="my-2 text-left">
             <button class="btn btn-primary mb-3" type="button" (click)="savePelicula()">
-              Siguiente
+              Guardar
             </button>
           </div>
+
         </form>
-      </mat-tab>
-      <mat-tab label="Preview">
+      </div>
+
+      <div class="col-sm-6" id="columna">
         <app-film-card [pelicula]="pelicula"> </app-film-card>
-      </mat-tab>
-    </mat-tab-group>
+      </div>
+
+    </div>
 
   </div>
 

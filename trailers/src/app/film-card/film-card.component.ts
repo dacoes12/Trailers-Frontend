@@ -10,6 +10,5 @@ export class FilmCardComponent {
   @Input('pelicula') pelicula !: peliculaDTO;
 
   constructor(){
-    console.log(this.pelicula);
   }
 }
