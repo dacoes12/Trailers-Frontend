@@ -6,3 +6,5 @@
 ## Backend
 
 - [@Repositorio](https://github.com/dacoes12/Trailers)
+
+- se uso la api de youtube
