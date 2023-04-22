@@ -20,6 +20,5 @@ export class ImgBBService {
     formData.append('image',file);
 
     return this.httpClient.post<ResponseImg>('upload',formData,{params:{key:this.apiKey} }).pipe(map(response => response.data.url))
-
   }
 }

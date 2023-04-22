@@ -1,0 +1,28 @@
+
+<mat-card>
+  <mat-card-header>Films</mat-card-header>
+  <br>
+  <mat-divider></mat-divider>
+  <mat-paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page">
+  </mat-paginator>
+  <mat-divider></mat-divider>
+  <br>
+  <mat-card-content>
+    <div class="contenedor">
+      <app-film-card id="item" *ngFor="let film of peliculas" [pelicula]="film"></app-film-card>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="handlePageEvent($event)"
+    aria-label="Select page">
+  </mat-paginator>
+</mat-card>

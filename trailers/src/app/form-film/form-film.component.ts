@@ -3,11 +3,11 @@ import { peliculaDTO } from '../models/peliculaDTO';
 import { ServiceGeneroService } from '../service/service-genero.service';
 import { generoDTO } from '../models/generoDTO';
 import { ImgBBService } from '../service/imgBB/img-bb.service';
-import { elementAt } from 'rxjs';
 import { PeliculaService } from '../service/pelicula/pelicula.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCardComponent } from '../modal-card/modal-card.component';
 import { ModalImagenComponent } from '../modal-imagen/modal-imagen.component';
+
 
 @Component({
   selector: 'app-form-film',

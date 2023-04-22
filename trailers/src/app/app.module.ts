@@ -23,11 +23,19 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import { ModalImagenComponent } from './modal-imagen/modal-imagen.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FilmsListComponent } from './films-list/films-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { FilmViewComponent } from './film-view/film-view.component';
+import { ModalVideoComponent } from './modal-video/modal-video.component';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 
 const routes: Routes = [
-  {path:'', redirectTo:'/register', pathMatch: 'full'},
-  {path:'register', component: FormFilmComponent}
+  {path:'', redirectTo:'/view', pathMatch: 'full'},
+  {path:'filmslist', component: FilmsListComponent},
+  {path:'register', component: FormFilmComponent},
+  {path:'prueba', component: FilmCardComponent},
+  {path:'view', component: FilmViewComponent}
 ];
 
 @NgModule({
@@ -37,7 +45,10 @@ const routes: Routes = [
     FormFilmComponent,
     FilmCardComponent,
     ModalCardComponent,
-    ModalImagenComponent
+    ModalImagenComponent,
+    FilmsListComponent,
+    FilmViewComponent,
+    ModalVideoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +66,8 @@ const routes: Routes = [
     MatIconModule,
     MatDialogModule,
     MatDividerModule,
+    MatPaginatorModule,
+    NgxYoutubePlayerModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [],
